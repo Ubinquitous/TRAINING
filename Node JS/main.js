@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
 
-const indexRouter = require('./router/index');
-const boardRouter = require('./router/board');
+const indexRouter = require('./src/router/index');
+const boardRouter = require('./src/router/board');
 
 dotenv.config();
 const app = express();
