@@ -5,8 +5,9 @@ const cors = require('cors');
 const nunjucks = require('nunjucks');
 const models = require('./database/models');
 
-const main = require('./src/index');
-const board = require('./src/board');
+const indexRouter = require('./src/index');
+const commentRouter = require('./src/comments');
+const userRouter = require('./src/users');
 
 dotenv.config();
 const app = express();
@@ -21,12 +22,13 @@ models.sequelize.sync({ force: false })
         console.log('complete db connecting');
     })
     .catch((err) => {
-        console.log(`err : ${err}`);
+        console.log(`err :: ${err}`);
     })
 
 
-app.use('/', main);
-app.use('/board', board);
+app.use('/', indexRouter);
+app.use('/comment', commentRouter);
+app.use('/user', userRouter);
 
 app.use((req, res, next) => {
     const err = new Error(`${req.method} ${req.url} Router is not defined`);
