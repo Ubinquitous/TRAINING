@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = class User extends Sequelize.Model {
+module.exports = class Comment extends Sequelize.Model {
     static init(sequelize) {
         return super.init({
             comment: {
@@ -9,7 +9,7 @@ module.exports = class User extends Sequelize.Model {
             },
             created_at: {
                 type: Sequelize.DATE,
-                allowNull: false,
+                allowNull: true,
                 defaultValue: Sequelize.NOW,
             },
         }, {
