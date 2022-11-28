@@ -7,6 +7,7 @@ const nunjucks = require('nunjucks');
 const dotenv = require('dotenv');
 
 dotenv.config();
+const webSocket = require('./socket');
 const index = require('./routes');
 
 const app = express();
@@ -47,4 +48,6 @@ app.use((err, req, res, next) => {
     res.render('error');
 });
 
-app.listen(8000);
+const server = app.listen(8000);
+
+webSocket(server);
